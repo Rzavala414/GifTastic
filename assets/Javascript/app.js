@@ -3,8 +3,8 @@ var myGIf = ["batman", "mike-tyson", "dragon-ball-Z"];
 //Linked Giphy CDN
 function getGifs(topic) {
     //Grabs 10 stickers of a GIF with Pg
-    var queryURLStatic = `https://api.giphy.com/v1/stickers/search?q=${topic}&limit=10&rating=pg-13&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;
-
+    var queryURLStatic = `https://api.giphy.com/v1/stickers/search?q=${topic}&limit=10&rating=pg-13&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;    
+    //Grabs 10 stickers of a GIF with Pg
     var queryURLAnimated = `https://api.giphy.com/v1/gifs/search?q=${topic}&limit=10&rating=pg-13&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;
     $.ajax({
         url: queryURLStatic,
