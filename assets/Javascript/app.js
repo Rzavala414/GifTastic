@@ -12,18 +12,27 @@ function getGifs(topic) {
 
     }).then(function (response) {
         
-        //loop through all the images
+        //loop through all 10 images requested
             for (let i = 0; i < response.data.length; i++) {
-                //gives access to url data
-                var url = response.data[i].images["480w_still"].url
+                // new div to hold gifs
+                var gifDiv = $("<div class='gif'>");
+
                 //gives access to rating 
-                var rating = response.data[i].rating
+                var rating = response.data[i].rating;
+
                 //adds rating to page
-                $("#gifs-to-screen").prepend("Rating:" + rating);
-                //adds giphy sticker to screen
-                var gifImage = (`<img src="${url}">`)
-                //adds GIFs on to main screen
-                $("#gifs-to-screen").prepend(gifImage);
+                gifDiv.append("Rating:" + rating);
+                
+                //gives access to image url data
+                var imgURL = response.data[i].images["480w_still"].url;
+
+                //creating a new element to hold the image
+                var gifImage = $("<img>").attr("src",imgURL);
+
+                //attaches images to the gifDiv with ratings info
+                gifDiv.append(gifImage);
+                
+                $("#view-gif-img").prepend(gifDiv)
 
              
             }
