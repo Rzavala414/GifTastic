@@ -2,8 +2,10 @@
 var myGIf = ["batman", "spider-man", "dragon-ball"];
 //Linked Giphy CDN
 function displayGifs(topic) {
+    console.log(topic)
+    console.log("test");
     //Grabs 10 stickers of a GIF with Pg
-    var queryURLStatic = `https://api.giphy.com/v1/stickers/search?q=${topic}&limit=10&rating=pg&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;    
+    var queryURLStatic = `https://api.giphy.com/v1/stickers/search?q=${topic}&limit=10&rating=pg&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;
     //Grabs 10 stickers of a GIF with Pg
     var queryURLAnimated = `https://api.giphy.com/v1/gifs/search?q=${topic}&limit=10&rating=pg&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;
     $.ajax({
@@ -11,31 +13,31 @@ function displayGifs(topic) {
         method: "GET"
 
     }).then(function (response) {
-        
+
         //loop through all 10 images requested
-            for (let i = 0; i < response.data.length; i++) {
-                // new div to hold gifs
-                var gifDiv = $("<div class='gif'>");
+        for (let i = 0; i < response.data.length; i++) {
+            // new div to hold gifs
+            var gifDiv = $("<div class='gif'>");
 
-                //gives access to rating 
-                var rating = response.data[i].rating;
+            //gives access to rating 
+            var rating = response.data[i].rating;
 
-                //adds rating to page
-                gifDiv.append("Rating:" + rating);
-                
-                //gives access to image url data
-                var imgURL = response.data[i].images["480w_still"].url;
+            //adds rating to page
+            gifDiv.append("Rating:" + rating);
 
-                //creating a new element to hold the image
-                var gifImage = $("<img>").attr("src",imgURL);
+            //gives access to image url data
+            var imgURL = response.data[i].images["480w_still"].url;
 
-                //attaches images to the gifDiv with ratings info
-                gifDiv.append(gifImage);
-                
-                $("#view-gif-img").prepend(gifDiv)
+            //creating a new element to hold the image
+            var gifImage = $("<img>").attr("src", imgURL);
 
-             
-            }
+            //attaches images to the gifDiv with ratings info
+            gifDiv.append(gifImage);
+
+            $("#view-gif-img").prepend(gifDiv)
+
+
+        }
 
     });
 
@@ -52,17 +54,20 @@ function renderButtons() {
         //adding a class to array buttons
         gifButton.addClass("gif-btn");
         //adding a data-attribute
-        gifButton.data("data-name",myGIf[i]);
+        gifButton.data("data-name", myGIf[i]);
         //providing the initial button text
         gifButton.text(myGIf[i]);
         //adding the button to the gif-buttons div
         $("#gif-buttons").append(gifButton);
     }
-    
+
 }
 
-$("#add-gif").on("click",function(event){
+$("#add-gif").on("click", function (event) {
     event.preventDefault();
+
+
+
 
     //Grabs input from the textbox
     var usersGIF = $("#gif-input").val().trim();
@@ -74,7 +79,9 @@ $("#add-gif").on("click",function(event){
 
 });
 
-$(document).on("click", ".gif-btn", displayGifs);
+$(document).on("click", ".gif-btn", function () {
+    displayGifs($(this).text())
+});
 
 renderButtons();
 
