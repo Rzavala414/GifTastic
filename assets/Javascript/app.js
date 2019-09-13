@@ -1,5 +1,5 @@
 // this array stores the values of the GIFs we'll choose from
-var myGIf = ["batman", "mike-tyson", "dragon-ball-Z"];
+var myGIf = ["batman", "spider-man", "dragon-ball"];
 //Linked Giphy CDN
 function displayGifs(topic) {
     //Grabs 10 stickers of a GIF with Pg
