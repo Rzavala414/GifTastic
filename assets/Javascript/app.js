@@ -1,7 +1,7 @@
 // this array stores the values of the GIFs we'll choose from
 var myGIf = ["batman", "mike-tyson", "dragon-ball-Z"];
 //Linked Giphy CDN
-function getGifs(topic) {
+function displayGifs(topic) {
     //Grabs 10 stickers of a GIF with Pg
     var queryURLStatic = `https://api.giphy.com/v1/stickers/search?q=${topic}&limit=10&rating=pg&api_key=xKtabkdViFrxRn5oMum5q8ysKXiEX62t`;    
     //Grabs 10 stickers of a GIF with Pg
@@ -61,16 +61,21 @@ function renderButtons() {
     
 }
 
-$(document).on("click","button",function(){
-    var name = $(this).data("data-name")
-    getGifs(name);
+$("#add-gif").on("click",function(event){
+    event.preventDefault();
+
+    //Grabs input from the textbox
+    var usersGIF = $("#gif-input").val().trim();
+
+    //Adding users info into our array
+    myGIf.push(usersGIF)
+
+    renderButtons();
 
 });
 
+$(document).on("click", ".gif-btn", displayGifs);
 
 renderButtons();
 
-
-//TODO:when the user clicks the buttons have it display 10 GIFs on to the page that are still images with their rating underneath
-//TODO:when the user clicks on the the image have the GIF play
-//TODO:
+//TODO: make an if statment comparing if the gif is a sticker or is a gif when clicked
