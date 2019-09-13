@@ -6,20 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>GifTastic</title>
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Anton&display=swap"
+      rel="stylesheet"
+    />
     <!-- Local CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-      <!-- adds starting buttons -->
-    <div id="gif-buttons">
-        <span><label>Add a GIF!!!</label></span>
-        <input type="text" id="gif-input" />
-        
-    </div>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- adds starting buttons -->
+    <div id="gif-buttons"></div>
+    <!-- adds a input bar to add new gif buttons to the page -->
+    <form id="movie-form">
+
+      <input type="text" id="gif-input" />
+      <br />
+
+      <!-- Button triggers a new gif button to be added -->
+      <input id="add-gif" type="submit" value="Add Your Own GIF" />
+    </form>
+
     <!-- gifs will display in here -->
     <div id="view-gif-img"></div>
-    
+
     <!-- jQuery linked -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- personal Javascript file -->

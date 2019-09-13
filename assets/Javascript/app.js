@@ -43,6 +43,9 @@ function getGifs(topic) {
 
 //Creates three buttons with my three themes and displays them to the page
 function renderButtons() {
+    //deletes buttons prior to adding more
+    $("#gif-buttons").empty();
+
     for (let i = 0; i < myGIf.length; i++) {
         //creates a new button tag for item in "myGIF" array
         var gifButton = $("<button>");
